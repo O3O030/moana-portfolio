@@ -14,7 +14,7 @@ export const siteContent = {
     work: { en: "SELECTED WORK", zh: "精選作品", title: "讓策略，成為可以實際運作的方法。" },
     capabilities: { en: "WHAT I DO", zh: "我做什麼", title: "從思考，走向實踐。" },
     about: { en: "ABOUT", zh: "關於我" },
-    skills: { en: "SKILLS / HOW I WORK", zh: "技能與工作方法", title: "我的工作方法。" },
+    skills: { en: "HOW I WORK", zh: "我的工作方法", title: "把問題拆清楚，再讓 AI 成為執行與驗證的協作者。" },
   },
   contactCta: {
     eyebrow: "CONTACT",
