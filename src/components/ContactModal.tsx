@@ -6,7 +6,7 @@ const ContactContext = createContext<ContactContextValue | null>(null);
 
 export function ContactProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
-  const [state, setState] = useState<"idle" | "loading" | "success" | "config" | "error">("idle");
+  const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
@@ -35,8 +35,6 @@ export function ContactProvider({ children }: { children: ReactNode }) {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
-    const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT?.trim();
-    if (!endpoint) { setState("config"); return; }
     setState("loading");
     try {
       const formData = new FormData(form);
@@ -46,9 +44,8 @@ export function ContactProvider({ children }: { children: ReactNode }) {
         subject: String(formData.get("subject") ?? ""),
         message: String(formData.get("message") ?? ""),
       };
-      const response = await fetch(endpoint, {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        redirect: "follow",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
@@ -69,7 +66,6 @@ export function ContactProvider({ children }: { children: ReactNode }) {
           <label><span>{copy.fields.subjectEn}<small>{copy.fields.subject}</small></span><input name="subject" required /></label>
           <label><span>{copy.fields.messageEn}<small>{copy.fields.message}</small></span><textarea name="message" rows={5} required /></label>
           <button className="button button-dark" type="submit" disabled={state === "loading"}>{state === "loading" ? copy.sending : copy.submit}<span aria-hidden="true">↗</span></button>
-          {state === "config" && <div className="form-notice" role="status"><strong>{copy.configTitle}</strong><p>{copy.configBody}</p><code>{siteContent.email}</code></div>}
           {state === "error" && <div className="form-notice form-error" role="alert"><strong>{copy.errorTitle}</strong><p>{copy.errorBody}</p><code>{siteContent.email}</code></div>}
         </form>}
       </div>

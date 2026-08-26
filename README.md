@@ -38,18 +38,18 @@ npm run dev
 
 在 `src/content/videos.ts` 的 `videoProjects` 新增或修改資料。未設定 `videoUrl` 時會顯示 Coming Soon，不會建立空白或損壞的播放器；加入 `videoUrl` 與選填的 `poster` 後，卡片會自動顯示可操作的影片。
 
-## Contact form / Formspree
+## Contact form / Google Sheets
 
 聯絡信箱與 Modal 文案位於 `src/content/site.ts`。目前正式聯絡信箱為 `onaku2022@gmail.com`。
 
-1. 在 [Formspree](https://formspree.io/) 建立 form。
-2. 將收件地址設定並驗證為 `onaku2022@gmail.com`。
+1. 部署 Google Apps Script Web App 並取得 `/exec` endpoint。
+2. 確認 Web App 可將 JSON submission 寫入 Google Sheets。
 3. 複製 `.env.example` 為 `.env.local`。
-4. 將 Formspree 提供的完整 endpoint 填入 `VITE_CONTACT_FORM_ENDPOINT`，不要把私密設定提交至 Git。
-5. 執行 `npm run dev`，開啟聯絡視窗並送出測試訊息。
-6. 部署時，在託管平台設定同名的 `VITE_CONTACT_FORM_ENDPOINT` environment variable，再重新建置。
+4. 本機 Pages Functions 測試時在已被 Git 忽略的 `.dev.vars` 設定 `CONTACT_FORM_ENDPOINT`，不要把正式 endpoint 提交至 Git。
+5. 瀏覽器會將 JSON 送至同源 `/api/contact`，Pages Function 再轉送至 Google Apps Script。
+6. 部署時，在 Cloudflare Pages Variables and Secrets 設定 `CONTACT_FORM_ENDPOINT`，再重新部署。
 
-如果 endpoint 尚未設定，Modal、欄位驗證與鍵盤操作仍可正常使用；送出時會顯示設定提示，不會開啟郵件程式或 crash。
+如果 endpoint 尚未設定或轉送失敗，表單會保留輸入內容並顯示直接 Email fallback，不會開啟郵件程式或 crash。
 
 ## 目錄
 

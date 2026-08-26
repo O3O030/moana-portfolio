@@ -28,7 +28,6 @@ export const siteContent = {
     fields: { name: "稱呼", nameEn: "Name", email: "聯絡信箱", emailEn: "Email", subject: "主旨", subjectEn: "Subject", message: "想聊什麼？", messageEn: "Message" },
     submit: "SEND MESSAGE · 送出訊息", sending: "SENDING... · 傳送中", close: "關閉聯絡視窗",
     successTitle: "Message sent. · 訊息已送出", successBody: "訊息已送出，謝謝你的聯絡。Message sent. Thank you for reaching out.",
-    configTitle: "Email is still available. · 仍可透過 Email 聯繫", configBody: "本機尚未設定訊息服務，你仍可以直接透過 Email 與我聯繫。The contact endpoint is not configured locally; you can still reach me directly by email.",
     errorTitle: "Unable to send. · 暫時無法送出", errorBody: "訊息暫時無法送出，你仍可以直接透過 Email 與我聯繫。Unable to send right now. You can still reach me directly by email.",
   },
   socialLinks: [] as LinkItem[],
