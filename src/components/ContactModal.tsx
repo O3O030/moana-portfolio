@@ -39,8 +39,20 @@ export function ContactProvider({ children }: { children: ReactNode }) {
     if (!endpoint) { setState("config"); return; }
     setState("loading");
     try {
-      const response = await fetch(endpoint, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
-      if (!response.ok) throw new Error("Form service rejected the request");
+      const formData = new FormData(form);
+      const payload = {
+        name: String(formData.get("name") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        subject: String(formData.get("subject") ?? ""),
+        message: String(formData.get("message") ?? ""),
+      };
+      const response = await fetch(endpoint, {
+        method: "POST",
+        redirect: "follow",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error("Contact endpoint rejected the request");
       form.reset(); setState("success");
     } catch { setState("error"); }
   };
@@ -58,7 +70,7 @@ export function ContactProvider({ children }: { children: ReactNode }) {
           <label><span>{copy.fields.messageEn}<small>{copy.fields.message}</small></span><textarea name="message" rows={5} required /></label>
           <button className="button button-dark" type="submit" disabled={state === "loading"}>{state === "loading" ? copy.sending : copy.submit}<span aria-hidden="true">↗</span></button>
           {state === "config" && <div className="form-notice" role="status"><strong>{copy.configTitle}</strong><p>{copy.configBody}</p><code>{siteContent.email}</code></div>}
-          {state === "error" && <p className="form-error" role="alert">{copy.error}</p>}
+          {state === "error" && <div className="form-notice form-error" role="alert"><strong>{copy.errorTitle}</strong><p>{copy.errorBody}</p><code>{siteContent.email}</code></div>}
         </form>}
       </div>
     </div>}
