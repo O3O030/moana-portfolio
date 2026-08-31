@@ -1,11 +1,51 @@
-import { videoProjects, videoSectionContent } from "../content/videos";
+import { useEffect, useRef, useState } from "react";
+import { selectedWorks, videoSectionContent } from "../content/videos";
 
 export function VideoShowcase() {
-  return <section id="films" className="section films container">
-    <div className="editorial-heading"><p className="bilingual-label"><span>{videoSectionContent.eyebrow}</span>{videoSectionContent.eyebrowZh}</p><div><h2>{videoSectionContent.title}</h2><p>{videoSectionContent.description}</p></div></div>
-    <div className="film-grid">{videoProjects.map((video, index) => <article className="film-card" key={video.id}>
-      {video.videoUrl ? <video controls preload="metadata" poster={video.poster} aria-label={video.titleZh ?? video.title}><source src={video.videoUrl} /></video> : <div className="film-placeholder" aria-label={videoSectionContent.comingSoon}><span>{String(index + 1).padStart(2, "0")}</span><i aria-hidden="true">▷</i><p>{videoSectionContent.comingSoon}</p></div>}
-      {(video.title || video.titleZh) && <div className="film-copy"><p>{video.category}</p><h3>{video.titleZh ?? video.title}</h3>{video.title && video.titleZh && <small>{video.title}</small>}</div>}
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const items = Array.from(section.querySelectorAll<HTMLElement>(".selected-work"));
+    section.classList.add("selected-works--reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  const playFilm = (id: string) => {
+    if (activeVideo === id) {
+      void videoRef.current?.play();
+      return;
+    }
+    setActiveVideo(id);
+  };
+
+  return <section id="films" ref={sectionRef} className="section selected-works container">
+    <div className="editorial-heading selected-works-heading"><p className="eyebrow">{videoSectionContent.eyebrow}</p><div><h2>{videoSectionContent.title}</h2><p>{videoSectionContent.description}</p></div></div>
+    <div className="selected-work-grid">{selectedWorks.map((work) => <article className="selected-work" key={work.id}>
+      <div className="selected-work-media">
+        {work.kind === "video" && activeVideo === work.id && work.videoUrl
+          ? <video ref={videoRef} controls autoPlay preload="metadata" poster={work.image} aria-label={`${work.title} 播放器`}><source src={work.videoUrl} type="video/mp4" /></video>
+          : work.kind === "video"
+            ? <button type="button" className="selected-work-media-link" onClick={() => playFilm(work.id)} aria-label={`播放 ${work.title}`}><img src={work.image} alt={work.alt} /><span aria-hidden="true">PLAY →</span></button>
+            : <a className="selected-work-media-link" href={work.href} target="_blank" rel="noopener noreferrer" aria-label={`${work.title}（在新分頁開啟）`}><img src={work.image} alt={work.alt} /><span aria-hidden="true">OPEN ↗</span></a>}
+      </div>
+      <div className="selected-work-copy"><p className="selected-work-meta"><span>{work.category}</span><span>{work.number}</span></p><h3>{work.title}</h3><p className="selected-work-description">{work.description}</p>
+        {work.kind === "video"
+          ? <button type="button" className="selected-work-cta" onClick={() => playFilm(work.id)}>{work.cta} <span aria-hidden="true">→</span></button>
+          : <a className="selected-work-cta" href={work.href} target="_blank" rel="noopener noreferrer">{work.cta} <span aria-hidden="true">↗</span></a>}
+      </div>
     </article>)}</div>
   </section>;
 }
