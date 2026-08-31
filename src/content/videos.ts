@@ -42,6 +42,6 @@ export const selectedWorks: SelectedWork[] = [
     image: "/images/brand-radar/silva-lab-brand-strategy.png",
     alt: "森研社品牌企劃作品預覽",
     kind: "external",
-    href: "https://canva.link/t4o20fihyyhu4ct",
+    href: "https://canva.link/l9oxji3uh2z3b61",
   },
 ];
