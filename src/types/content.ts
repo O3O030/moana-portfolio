@@ -3,7 +3,7 @@ export interface Experience { company: string; role: string; startDate: string; 
 export type SkillCategory = "01 — MARKETING JUDGMENT / 行銷判斷" | "02 — AI COLLABORATION / AI 協作" | "03 — PROBLEM → WORKFLOW / 問題轉成流程" | "04 — AI-ASSISTED BUILD / AI 協作實作";
 export interface Skill { name: string; category: SkillCategory; level?: string; description?: string }
 export interface VideoProject { id: string; title?: string; titleZh?: string; description?: string; poster?: string; videoUrl?: string; duration?: string; category?: string; status?: string }
-export interface SelectedWork { id: string; category: string; number: string; title: string; description: string; cta: string; image: string; alt: string; kind: "video" | "external"; href?: string; videoUrl?: string }
+export interface SelectedWork { id: string; category: string; number: string; title: string; description: string; cta: string; image?: string; alt: string; kind: "video" | "preview" | "external"; href?: string; videoUrl?: string }
 export interface ProjectStat { value: string; label: string }
 export interface ProjectImage { src?: string; plannedSrc?: string; alt: string; caption?: string; note?: string; stageLabels?: string[] }
 export interface ProjectSectionItem { title: string; description?: string; meta?: string; label?: string; details?: string[] }

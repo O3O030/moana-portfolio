@@ -35,7 +35,9 @@ export function VideoShowcase() {
     <div className="editorial-heading selected-works-heading"><p className="eyebrow">{videoSectionContent.eyebrow}</p><div><h2>{videoSectionContent.title}</h2><p>{videoSectionContent.description}</p></div></div>
     <div className="selected-work-grid">{selectedWorks.map((work) => <article className="selected-work" key={work.id}>
       <div className="selected-work-media">
-        {work.kind === "video" && activeVideo === work.id && work.videoUrl
+        {work.kind === "preview" && work.videoUrl
+          ? <video controls playsInline preload="metadata" aria-label={work.alt}><source src={work.videoUrl} type="video/mp4" /></video>
+          : work.kind === "video" && activeVideo === work.id && work.videoUrl
           ? <video ref={videoRef} controls autoPlay preload="metadata" poster={work.image} aria-label={`${work.title} 播放器`}><source src={work.videoUrl} type="video/mp4" /></video>
           : work.kind === "video"
             ? <button type="button" className="selected-work-media-link" onClick={() => playFilm(work.id)} aria-label={`播放 ${work.title}`}><img src={work.image} alt={work.alt} /><span aria-hidden="true">PLAY →</span></button>

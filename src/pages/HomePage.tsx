@@ -18,11 +18,18 @@ export function HomePage() {
   return <>
     <Header />
     <main>
-      <section className="hero container">
-        <p className="eyebrow">{profileContent.heroEyebrow}</p>
-        <h1>{profileContent.heroHeadline}</h1>
-        <div className="hero-bottom"><p>{profileContent.heroDescription}</p><a className="button" href={siteContent.primaryCta.href.replace("/", "")}>{siteContent.primaryCta.label}<span aria-hidden="true">↓</span></a></div>
-        <div className="hero-mark" aria-hidden="true"><span>M</span><i /></div>
+      <section className="hero hero-ocean container">
+        <div className="hero-media">
+          <video className="hero-video" autoPlay muted loop playsInline preload="metadata" aria-label="Moana 個人品牌形象影片"><source src="/videos/moana.mp4" type="video/mp4" /></video>
+          <img className="hero-dolphin" src="/images/branding/moana-dolphin.png" alt="" aria-hidden="true" />
+        </div>
+        <div className="hero-content">
+          <img className="hero-logo" src="/images/branding/moana-logo.png" alt="Moana" />
+          <p className="eyebrow">{profileContent.heroEyebrow}</p>
+          <h1>{profileContent.heroHeadline}</h1>
+          <div className="hero-bottom"><p>{profileContent.heroDescription}</p><a className="button" href={siteContent.primaryCta.href.replace("/", "")}>{siteContent.primaryCta.label}<span aria-hidden="true">↓</span></a></div>
+          <img className="hero-character" src="/images/branding/mona-character.png" alt="揮手迎接訪客的 Mona 品牌角色" />
+        </div>
       </section>
       <section id="work" className="section container"><div className="editorial-heading"><p className="bilingual-label"><span>{siteContent.sectionLabels.work.en}</span>{siteContent.sectionLabels.work.zh}</p><h2>{siteContent.sectionLabels.work.title}</h2></div>{featuredProjects.length ? featuredProjects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />) : <p className="empty-state">Projects are being prepared.</p>}</section>
       <section className="section capabilities"><div className="container"><div className="editorial-heading"><p className="bilingual-label"><span>{siteContent.sectionLabels.capabilities.en}</span>{siteContent.sectionLabels.capabilities.zh}</p><h2>{siteContent.sectionLabels.capabilities.title}</h2></div><div className="capability-grid">{profileContent.capabilities.map((item) => <article key={item.number}><span>{item.number}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div></section>

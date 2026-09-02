@@ -7,7 +7,7 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link className="wordmark" to="/" aria-label="Moana home">{siteContent.name}<span>.</span></Link>
+        <Link className="wordmark" to="/" aria-label="Moana home"><img src="/images/branding/moana-logo.png" alt={siteContent.name} /></Link>
         <nav aria-label="Primary navigation">
           <ul className="nav-list">
             {siteContent.nav.map((item) => <li key={item.href}><a href={homeHref(item.href)}>{item.label}</a></li>)}
