@@ -32,6 +32,7 @@ export function VideoShowcase() {
   };
 
   return <section id="films" ref={sectionRef} className="section selected-works container">
+    <svg className="ocean-sticker sticker-starfish" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><path d="m40 9 8 21 22 1-17 14 6 22-19-12-19 12 6-22L10 31l22-1 8-21Z"/><path d="m40 24 3 12 12 1-9 8 3 11-9-6-9 6 3-11-9-8 12-1 3-12Z"/></svg>
     <div className="editorial-heading selected-works-heading"><p className="eyebrow">{videoSectionContent.eyebrow}</p><div><h2>{videoSectionContent.title}</h2><p>{videoSectionContent.description}</p></div></div>
     <div className="selected-work-grid">{selectedWorks.map((work) => <article className="selected-work" key={work.id}>
       <div className="selected-work-media">

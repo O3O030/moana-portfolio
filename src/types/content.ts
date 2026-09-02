@@ -1,6 +1,6 @@
 export interface LinkItem { label: string; href: string; external?: boolean }
 export interface Experience { company: string; role: string; startDate: string; endDate?: string; location?: string; summary?: string; responsibilities: string[]; highlights: string[]; tags: string[]; link?: string }
-export type SkillCategory = "01 — MARKETING JUDGMENT / 行銷判斷" | "02 — AI COLLABORATION / AI 協作" | "03 — PROBLEM → WORKFLOW / 問題轉成流程" | "04 — AI-ASSISTED BUILD / AI 協作實作";
+export type SkillCategory = "01 — EXPLORE / 探索" | "02 — CHOOSE / 選擇" | "03 — COLLABORATE / 協作" | "04 — MAKE & LEARN / 實作與學習";
 export interface Skill { name: string; category: SkillCategory; level?: string; description?: string }
 export interface VideoProject { id: string; title?: string; titleZh?: string; description?: string; poster?: string; videoUrl?: string; duration?: string; category?: string; status?: string }
 export interface SelectedWork { id: string; category: string; number: string; title: string; description: string; cta: string; image?: string; alt: string; kind: "video" | "preview" | "external"; href?: string; videoUrl?: string }

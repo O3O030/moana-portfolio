@@ -1,12 +1,13 @@
 // 主要內容編輯區：個人定位、首頁 Hero、About 與主要能力都在這裡修改。
 export const profileContent = {
   name: "Moana",
-  role: "Marketing × AI Strategist",
-  heroEyebrow: "Marketing × AI × Problem Solving",
-  heroHeadline: "我把行銷問題，拆成可以被 AI 協助的工作流程。",
-  heroDescription: "從趨勢判讀、品牌策略到內容規劃，我關注的不只是 AI 能生成什麼，而是如何把 AI 放進真正的工作流程，協助人做出更好的決策。",
+  role: "Marketing × AI Collaboration",
+  heroEyebrow: "MARKETING × AI COLLABORATION",
+  heroHeadline: ["把好奇變成想法，", "再把想法做成作品。"],
+  heroHeadlineEn: ["Turning curiosity into ideas,", "and ideas into creations."],
+  heroDescription: "我不一定一開始就知道答案。我習慣從好奇出發，透過研究、交流與 AI 協作慢慢找到方向，再把想法做出來，在實作中繼續學習與修正。",
   shortBio: "在策略與實作之間，建立清楚、可驗證、能持續迭代的工作方法。",
-  about: "我喜歡從模糊的問題開始，找出真正需要被解決的核心，再把研究、判斷與執行整理成團隊能使用的流程。現在，我特別關注 AI 如何成為思考的夥伴，而不只是內容生成工具。",
+  about: "我喜歡從模糊的問題開始，把模糊的想法逐漸整理成可以實際嘗試的方向。再把研究、判斷與執行整理成團隊能使用的流程。現在，我特別關注 AI 如何成為思考的夥伴，而不只是內容生成工具。",
   currentFocus: "設計讓行銷團隊更快形成判斷的 AI 工作流程。",
   location: "",
   email: "onaku2022@gmail.com",
