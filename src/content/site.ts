@@ -7,6 +7,7 @@ export const siteContent = {
     { label: "作品 Work", href: "/#work" },
     { label: "關於 About", href: "/#about" },
     { label: "技能 Skills", href: "/#skills" },
+    { label: "RESUME", href: "/resume" },
   ] satisfies LinkItem[],
   primaryCta: { label: "查看作品 · View Work", href: "/#work" },
   email: "onaku2022@gmail.com",

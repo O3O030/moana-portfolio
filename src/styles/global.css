@@ -132,3 +132,50 @@ body{background:var(--background);color:var(--text-primary)}
 .resume-experience-details:not([hidden]),.resume-other-list:not([hidden]){animation:resume-reveal .22s ease-out}
 @keyframes resume-reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.resume-experience-details:not([hidden]),.resume-other-list:not([hidden]){animation:none}}
+
+/* Final content readability pass */
+@media(min-width:1025px){
+  :root{--max-width:1240px;--type-body:1.125rem;--type-small:.9375rem;--type-eyebrow:.9375rem}
+  body{font-size:1.125rem;line-height:1.68}
+  .container{width:min(calc(100% - 5rem),var(--max-width))}
+  .section{padding-block:5.625rem}
+  .resume-profile{padding-block:6rem}
+  .resume-section{padding-block:5.5rem}
+  .case-section{padding-block:5.5rem}
+  .project-meta,.project-copy .subtitle,.featured-metrics,.tag-list li,.selected-work-meta,.selected-work-cta,.resume-date,.resume-context,.resume-tags li,.resume-experience-summary button,.resume-more{font-size:.9375rem}
+  .project-copy>p:not(.subtitle),.selected-work-description,.capability-grid p,.skill-groups>article>p,.skill-groups li,.about>div>p,.contact-inner>p:not(.bilingual-label),.resume-experience-summary>div>p,.resume-project p,.resume-project li,.resume-skill-grid li,.resume-education p{font-size:1.0625rem}
+  .eyebrow,.bilingual-label,.case-kicker,.case-index,.item-label,.hero-metrics dd,.stats dd{font-size:.9375rem}
+  .button,.text-link{font-size:.9375rem}
+  .resume-reading>p,.case-content>p:not(.eyebrow):not(.section-footer),.section-footer{font-size:1.125rem;line-height:1.72}
+  .resume-reading{max-width:860px}.case-content{max-width:860px}.case-content>.editorial-screenshot,.variant-value .editorial-screenshot{max-width:860px}
+}
+@media(min-width:801px) and (max-width:1024px){.container{width:calc(100% - 3rem)}.section,.resume-section{padding-block:4.75rem}}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem}.hero-resume-link{color:var(--text-blue);font-family:"Ysabeau","Segoe UI",sans-serif;font-weight:600;letter-spacing:.08em}
+.back-to-top{position:fixed;z-index:8;right:clamp(1rem,2.5vw,2.5rem);bottom:clamp(1rem,2.5vw,2.5rem);display:grid;width:52px;height:52px;place-items:center;border:1px solid rgba(250,248,243,.65);border-radius:50%;background:var(--text-blue);color:var(--ocean-cream-light);font:600 .875rem/1 "Ysabeau","Segoe UI",sans-serif;text-decoration:none;box-shadow:0 8px 18px rgba(31,48,60,.16)}.back-to-top span{position:absolute;bottom:7px;font-size:.55rem;letter-spacing:.08em}.back-to-top:focus-visible{outline:3px solid var(--ocean-mist);outline-offset:4px}
+@media(max-width:800px){body{font-size:1rem;line-height:1.7}.hero-actions{align-items:flex-start;flex-direction:column;gap:1.25rem}.back-to-top{width:46px;height:46px}.resume-reading>p,.resume-project p,.resume-experience-summary>div>p,.resume-experience-details li,.resume-other-list article>p,.resume-skill-grid li{font-size:1rem;line-height:1.7}}
+.resume-experience-summary button{display:flex;align-items:center;justify-content:flex-end;gap:.5rem;text-align:right}
+.resume-other-list[hidden],.resume-experience-details[hidden]{display:none}
+
+/* Final visual and UX correction */
+.resume-phone-toggle{display:inline-grid;width:44px;height:44px;place-items:center;flex:0 0 44px;border:1px solid rgba(97,123,141,.45);border-radius:50%;background:rgba(200,218,230,.5);color:var(--text-blue);cursor:pointer}.resume-phone-toggle svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.resume-phone-toggle:hover{background:rgba(200,218,230,.8)}.resume-phone-toggle:focus-visible{outline:3px solid var(--ocean-mist);outline-offset:3px}
+.resume-profile blockquote strong{font-size:clamp(1.5rem,2vw,1.75rem);line-height:1.45}.resume-profile blockquote span{font-size:1.125rem;line-height:1.55}
+.footer-inner{font-size:1rem;line-height:1.6;gap:2rem}.footer-inner p:first-child{font-size:1.0625rem}.footer-inner p:last-child{font-size:.9375rem}
+.wordmark{width:165px}.wordmark img{height:68px}.header-inner{height:100px}
+.hero-english{font-family:"Ysabeau","Segoe UI",sans-serif;font-size:1.125rem;line-height:1.55;color:var(--text-blue-muted)}.hero-ocean .hero-bottom>p{font-size:1.25rem;line-height:1.7}.capability-grid span{font-size:.9375rem}.focus span{font-size:.9375rem}.selected-works-heading .eyebrow{font-size:1rem}
+.editorial-heading>.bilingual-label,.about>.bilingual-label{font-size:1.5rem;line-height:1.35}.editorial-heading>.bilingual-label span,.about>.bilingual-label span{font-size:1.125rem;margin-bottom:.45rem}.skills .editorial-heading>div>p{font-size:1.125rem;line-height:1.7}
+.back-to-top{position:fixed;z-index:8;right:clamp(1rem,2.5vw,2.5rem);bottom:clamp(1rem,2.5vw,2.5rem);display:grid;width:54px;height:54px;place-items:center;border:2px solid rgba(250,248,243,.82);border-radius:50%;background:rgba(200,218,230,.58);color:var(--text-blue);box-shadow:0 7px 22px rgba(82,107,125,.18),inset 0 0 0 1px rgba(97,123,141,.18);backdrop-filter:blur(8px);text-decoration:none;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,visibility .2s}.back-to-top:before{content:"";position:absolute;right:10px;top:8px;width:13px;height:7px;border-top:2px solid rgba(255,255,255,.85);border-radius:50%;transform:rotate(28deg)}.back-to-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}.back-to-top-arrow{font:500 1.25rem/1 "Ysabeau","Segoe UI",sans-serif;transform:translateY(-3px)}.back-to-top-label{position:absolute;bottom:8px;font:600 .5rem/1 "Ysabeau","Segoe UI",sans-serif;letter-spacing:.08em}.back-to-top:hover{background:rgba(220,233,239,.78);transform:translateY(-3px)}
+
+/* Brand Radar shared horizontal guide */
+.case-section{display:block;padding-block:5.5rem;text-align:left}.case-index{margin:0 0 1rem;font-size:1.0625rem;line-height:1.4}.case-content,.variant-insight .case-content,.variant-value .case-content{width:100%;max-width:none;margin:0}.case-content>.eyebrow{max-width:860px;margin-left:0;font-size:1.125rem;line-height:1.4}.case-content h2,.variant-value .case-content h2{max-width:860px;margin-left:0}.case-content>p:not(.eyebrow):not(.section-footer),.section-footer,.case-content blockquote{max-width:860px;margin-left:0;margin-right:auto;font-size:1.125rem;line-height:1.72;text-align:left}.case-content>.editorial-screenshot,.variant-value .editorial-screenshot{width:100%;max-width:860px;margin-left:0;margin-right:auto}.editorial-screenshot figcaption,.editorial-screenshot figcaption small{font-size:1.0625rem;line-height:1.6;text-align:left}.case-section .stats,.case-section .section-items{margin-left:0;margin-right:0}.variant-value{padding-block:6.5rem}.case-closing{padding-block:6rem}.case-closing>.container{text-align:left}.screenshot-hero{margin-left:0;margin-right:auto}.screenshot-hero figcaption,.screenshot-hero figcaption small{font-size:1.0625rem}
+
+@media(max-width:800px){
+  .wordmark{width:122px}.wordmark img{height:54px}.header-inner{min-height:82px}
+  .resume-profile blockquote strong{font-size:1.375rem}.resume-profile blockquote span{font-size:1rem}
+  .footer-inner,.footer-inner p:first-child,.footer-inner p:last-child{font-size:.9375rem}
+  .hero-english{font-size:1.0625rem}.hero-ocean .hero-bottom>p{font-size:1.125rem}
+  .editorial-heading>.bilingual-label,.about>.bilingual-label{font-size:1.3125rem}.editorial-heading>.bilingual-label span,.about>.bilingual-label span{font-size:1rem}
+  .case-section{padding-block:4.75rem}.case-index,.case-content>.eyebrow{font-size:1rem}.case-content>p:not(.eyebrow):not(.section-footer),.section-footer,.case-content blockquote,.editorial-screenshot figcaption,.editorial-screenshot figcaption small,.screenshot-hero figcaption,.screenshot-hero figcaption small{font-size:1rem;line-height:1.7}.case-content>.editorial-screenshot,.variant-value .editorial-screenshot{max-width:100%}.variant-value{padding-block:5rem}.case-closing{padding-block:5rem}
+  .back-to-top{width:50px;height:50px}
+}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
+.back-to-top .back-to-top-arrow{position:static;bottom:auto;font-size:1.25rem;letter-spacing:normal}

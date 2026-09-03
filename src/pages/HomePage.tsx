@@ -8,6 +8,7 @@ import { siteContent } from "../content/site";
 import type { Skill, SkillCategory } from "../types/content";
 import { VideoShowcase } from "../components/VideoShowcase";
 import { ContactTrigger } from "../components/ContactModal";
+import { Link } from "react-router-dom";
 
 export function HomePage() {
   const featuredProjects = projects.filter((project) => project.featured);
@@ -27,7 +28,7 @@ export function HomePage() {
           <p className="eyebrow">{profileContent.heroEyebrow}</p>
           <h1>{profileContent.heroHeadline.map((line, index) => <span key={line}>{line}{index < profileContent.heroHeadline.length - 1 && <br />}</span>)}</h1>
           <p className="hero-english">{profileContent.heroHeadlineEn.map((line, index) => <span key={line}>{line}{index < profileContent.heroHeadlineEn.length - 1 && <br />}</span>)}</p>
-          <div className="hero-bottom"><p>{profileContent.heroDescription}</p><a className="button" href={siteContent.primaryCta.href.replace("/", "")}>{siteContent.primaryCta.label}<span aria-hidden="true">↓</span></a></div>
+          <div className="hero-bottom"><p>{profileContent.heroDescription}</p><div className="hero-actions"><a className="button" href={siteContent.primaryCta.href.replace("/", "")}>{siteContent.primaryCta.label}<span aria-hidden="true">↓</span></a><Link className="text-link hero-resume-link" to="/resume">RESUME <span aria-hidden="true">↗</span></Link></div></div>
         </div>
       </section>
       <section id="work" className="section container"><svg className="ocean-sticker sticker-shell" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><path d="M14 57c0-24 11-40 26-40s26 16 26 40H14Z"/><path d="M40 18v39M28 21l6 36M52 21l-6 36M20 31l9 26M60 31l-9 26"/><path d="M10 58h60"/></svg><div className="editorial-heading"><p className="bilingual-label"><span>{siteContent.sectionLabels.work.en}</span>{siteContent.sectionLabels.work.zh}</p><h2>{siteContent.sectionLabels.work.title}</h2></div>{featuredProjects.length ? featuredProjects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />) : <p className="empty-state">Projects are being prepared.</p>}</section>
